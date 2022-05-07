@@ -11,7 +11,7 @@
 #  ${CGICTRL_HOMEDIR}/tranres/_tranname_
 #  ${CGICTRL_HOMEDIR}/usertran/_username_
 #
-CGICTRL_HOMEDIR=/home/m-ito/.shellcgi; export CGICTRL_HOMEDIR
+CGICTRL_HOMEDIR=/home/_USERNAME_/.shellcgi; export CGICTRL_HOMEDIR
 #
 # Set temporary directory for shellcgi system.
 # This directory will be created by shellcgi.cgi automatically.

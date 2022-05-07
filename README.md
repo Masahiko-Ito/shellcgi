@@ -22,6 +22,17 @@ cp -r shellcgi/public_html/shellcgi ~/public_html/
 cp -r shellcgi/.shellcgi ~/
 ```
 
+## 環境設定
+~/public_html/shellcgi/cgi-bin/shellcgi.sh内の環境変数を適切に設定します。
+```
+CGICTRL_HOMEDIR=/home/_USERNAME_/.shellcgi; export CGICTRL_HOMEDIR
+CGICTRL_TMPDIR=/tmp/.shellcgi; export CGICTRL_TMPDIR
+CGICTRL_LOGGING=YES; export CGICTRL_LOGGING
+CGICTRL_NOAUTHENTICATEDUSER=anonymous; export CGICTRL_NOAUTHENTICATEDUSER
+CGICTRL_MAXLOCKRETRY=180; export CGICTRL_MAXLOCKRETRY
+CGICTRL_SWEEPDAY=2; export CGICTRL_SWEEPDAY
+```
+
 ## 開発の手順(例)
 
 ### 実装する機能
