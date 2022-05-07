@@ -139,8 +139,8 @@ echo "${HOME}/public_html/shellcgi/cgi-bin/sample2.cgi" >~/.shellcgi/tranpgm/SAM
 ```
 
 ### トランザクションとリソースを定義する
-~/.shellcgi/tranres/の下にトランザクションを示す文字列(トランザクションID)と同名のファイルを作成し、その中に
-トランザクションで排他的に使用するリソースのリソースIDを記述します。リソースIDは~/.shellcgi/resource/の下に定義
+\~/.shellcgi/tranres/の下にトランザクションを示す文字列(トランザクションID)と同名のファイルを作成し、その中に
+トランザクションで排他的に使用するリソースのリソースIDを記述します。リソースIDは\~/.shellcgi/resource/の下に定義
 されている必要があります。
 ```
 echo "ETC_SHELLS" >~/.shellcgi/tranres/SAMPLE1
