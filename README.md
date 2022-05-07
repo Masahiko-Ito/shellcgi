@@ -279,3 +279,6 @@ echo "^SAMPLE[01]$" >~/.shellcgi/usertran/anonymous
 11. </body>
 12. </html>
 ```
+
+## デモ
+(http://myh.no-ip.org/~m-ito/shellcgi/)
