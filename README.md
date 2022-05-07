@@ -18,8 +18,8 @@
 ## インストール方法(例)
 ```
 tar xvf shellcgi.tar.gz
-cp -r shellcgi/public_html/shellcgi \~/public_html/
-cp -r shellcgi/.shellcgi \~/
+cp -r shellcgi/public_html/shellcgi ~/public_html/
+cp -r shellcgi/.shellcgi ~/
 ```
 
 ## 開発の手順(例)
@@ -36,7 +36,7 @@ cp -r shellcgi/.shellcgi \~/
 検索結果を表示する画面の2画面構成とします。
 
 ### 画面を設計する
-\~/.shellcgi/html/の下にhtmlファイル形式で画面を作成します。
+~/.shellcgi/html/の下にhtmlファイル形式で画面を作成します。
 
 #### 入力画面(sample1.html)
 ```
@@ -124,36 +124,36 @@ cp -r shellcgi/.shellcgi \~/
 
 ### リソースを定義する
 CGIプログラムで排他制御の対象とするリソースを定義します。
-\~/.shellcgi/resource/の下にリソースを示す文字列(リソースID)と同名のファイルを作成し、その中に
+~/.shellcgi/resource/の下にリソースを示す文字列(リソースID)と同名のファイルを作成し、その中に
 リソースの実体を示す文字列(ファイルであればフルパス等)を記述します。
 ```
-echo "/etc/shells" >\~/.shellcgi/resource/ETC_SHELLS
+echo "/etc/shells" >~/.shellcgi/resource/ETC_SHELLS
 ```
 
 ### トランザクションとCGIプログラムを定義する
-\~/.shellcgi/tranpgm/の下にトランザクションを示す文字列(トランザクションID)と同名のファイルを作成し、その中に
+~/.shellcgi/tranpgm/の下にトランザクションを示す文字列(トランザクションID)と同名のファイルを作成し、その中に
 トランザクションに紐づくCGIプログラムを記述します。
 ```
-echo "${HOME}/public_html/shellcgi/cgi-bin/sample1.cgi" >\~/.shellcgi/tranpgm/SAMPLE1
-echo "${HOME}/public_html/shellcgi/cgi-bin/sample2.cgi" >\~/.shellcgi/tranpgm/SAMPLE2
+echo "${HOME}/public_html/shellcgi/cgi-bin/sample1.cgi" >~/.shellcgi/tranpgm/SAMPLE1
+echo "${HOME}/public_html/shellcgi/cgi-bin/sample2.cgi" >~/.shellcgi/tranpgm/SAMPLE2
 ```
 
 ### トランザクションとリソースを定義する
-\~/.shellcgi/tranres/の下にトランザクションを示す文字列(トランザクションID)と同名のファイルを作成し、その中に
-トランザクションで排他的に使用するリソースのリソースIDを記述します。リソースIDは\~/.shellcgi/resource/の下に定義
+~/.shellcgi/tranres/の下にトランザクションを示す文字列(トランザクションID)と同名のファイルを作成し、その中に
+トランザクションで排他的に使用するリソースのリソースIDを記述します。リソースIDは~/.shellcgi/resource/の下に定義
 されている必要があります。
 ```
-echo "ETC_SHELLS" >\~/.shellcgi/tranres/SAMPLE1
-echo "ETC_SHELLS" >\~/.shellcgi/tranres/SAMPLE2
+echo "ETC_SHELLS" >~/.shellcgi/tranres/SAMPLE1
+echo "ETC_SHELLS" >~/.shellcgi/tranres/SAMPLE2
 ```
 
 ### ユーザに許可するトランザクションを定義する
-\~/.shellcgi/usertran/の下にBASIC認証またはDIGEST認証するユーザ名と同名のファイルを作成し、その中に
+~/.shellcgi/usertran/の下にBASIC認証またはDIGEST認証するユーザ名と同名のファイルを作成し、その中に
 そのユーザに許可するトランザクションIDを記述します(正規表現可能)。
 認証機構を使用しない場合は全てのユーザが仮想的にユーザ**anonymous**でアクセスしていることになるので、
 **anonymous**に許可するトランザクションIDを記述する必要があります。
 ```
-echo "^SAMPLE[01]$" >\~/.shellcgi/usertran/anonymous
+echo "^SAMPLE[01]$" >~/.shellcgi/usertran/anonymous
 ```
 
 ### sample1.cgi(入力画面処理CGI)
