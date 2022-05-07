@@ -1,0 +1,32 @@
+#
+# START=@:
+# END=:@
+#
+Content-Type: text/html
+
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>検索結果</title>
+</head>
+<body>
+	[SAMPLE2]
+	<h1>検索結果</h1>
+
+	<form action="./shellcgi.cgi" method="POST" enctype="multipart/form-data">
+		<input type="hidden" value="@:CGICTRL_SESSIONID:@" name="CGICTRL_SESSIONID">
+	<input type="submit" value="戻る" name="submit">
+	</form>
+	<h2>検索文字列</h2>
+	<pre>
+@:search:@
+	</pre>
+	<h2>検索結果</h2>
+	<pre>
+@:result:@
+	</pre>
+	<pre>
+@:message:@
+	</pre>
+</body>
+</html>
