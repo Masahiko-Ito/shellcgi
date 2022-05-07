@@ -24,6 +24,7 @@ cp -r shellcgi/.shellcgi ~/
 
 ## 環境設定
 ~/public_html/shellcgi/cgi-bin/shellcgi.sh内の環境変数を適切に設定します。
+最低限、**CGICTRL_HOMEDIR**の**_USERNAME_**部分は自己環境に合わせて修正が必要です。
 ```
 CGICTRL_HOMEDIR=/home/_USERNAME_/.shellcgi; export CGICTRL_HOMEDIR
 CGICTRL_TMPDIR=/tmp/.shellcgi; export CGICTRL_TMPDIR
@@ -281,4 +282,4 @@ echo "^SAMPLE[01]$" >~/.shellcgi/usertran/anonymous
 ```
 
 ## デモ
-[/etc/shells検索](http://myh.no-ip.org/~m-ito/shellcgi/)
+[shellcgi sample page](http://myh.no-ip.org/~m-ito/shellcgi/)
