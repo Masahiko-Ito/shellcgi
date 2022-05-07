@@ -281,4 +281,4 @@ echo "^SAMPLE[01]$" >~/.shellcgi/usertran/anonymous
 ```
 
 ## デモ
-(http://myh.no-ip.org/~m-ito/shellcgi/)
+[/etc/shells検索](http://myh.no-ip.org/~m-ito/shellcgi/)
