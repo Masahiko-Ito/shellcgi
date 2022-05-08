@@ -24,7 +24,7 @@ cp -r shellcgi/.shellcgi ~/
 
 ## 環境設定
 ~/public_html/shellcgi/cgi-bin/shellcgi.sh内の環境変数を適切に設定します。
-最低限、**CGICTRL_HOMEDIR**の**_USERNAME_**部分は自己環境に合わせて修正が必要です。
+最低限、**CGICTRL_HOMEDIR** の **_USERNAME_** 部分は自己環境に合わせて修正が必要です。
 ```
 CGICTRL_HOMEDIR=/home/_USERNAME_/.shellcgi; export CGICTRL_HOMEDIR
 CGICTRL_TMPDIR=/tmp/.shellcgi; export CGICTRL_TMPDIR
@@ -79,11 +79,11 @@ CGICTRL_SWEEPDAY=2; export CGICTRL_SWEEPDAY
 * 1: Content-typeを指定します。通常はサンプルの通りで良いでしょう。
 * 2: 必ず改行させます。
 * 3: この行以降に基本的にはhtml文法に従って定義していきます。
-* 12: formタグのactionには必ず**shellcgi.cgi**を呼び出すように指定します。
+* 12: formタグのactionには必ず **shellcgi.cgi** を呼び出すように指定します。
 * 13: formタグには必ずこのhiddenタイプのinputタグを記述します。通常はサンプルの通りで良いでしょう。
-* 14: **@{search}@**部分はCGIプログラムから置き換えます。
-* 17: **@{msgcolor=black}@**部分はCGIプログラムから置き換えます。CGIプログラムから置き換えなかった場合は**black**が規定値となります。
-* 18: **@{message=}@**部分はCGIプログラムから置き換えます。規定値として空文字が指定されています。
+* 14: **@{search}@** 部分はCGIプログラムから置き換えます。
+* 17: **@{msgcolor=black}@** 部分はCGIプログラムから置き換えます。CGIプログラムから置き換えなかった場合は **black** が規定値となります。
+* 18: **@{message=}@** 部分はCGIプログラムから置き換えます。規定値として空文字が指定されています。
 
 #### 検索結果画面(sample2.html)
 ```
@@ -123,16 +123,16 @@ CGICTRL_SWEEPDAY=2; export CGICTRL_SWEEPDAY
 行番号は説明の便宜上付番しているものなので、実際に記述してはいけません。
 では上から順に説明します。
 * 1: 「#」で始まる行はコメント行として扱われます。
-* 2: コメント行に、**START=**を記述した場合は、**=**の右辺値で置換対象文字列の開始を表す**@{**を変更します。
-* 3: コメント行に、**END=**を記述した場合は、**=**の右辺値で置換対象文字列の終了を表す**}@**を変更します。
+* 2: コメント行に、 **START=** を記述した場合は、 **=** の右辺値で置換対象文字列の開始を表す **@{** を変更します。
+* 3: コメント行に、 **END=** を記述した場合は、 **=** の右辺値で置換対象文字列の終了を表す **}@** を変更します。
 * 5: Content-typeを指定します。通常はサンプルの通りで良いでしょう。
 * 6: 必ず改行させます。
 * 7: この行以降に基本的にはhtml文法に従って定義していきます。
-* 16: formタグのactionには必ず**shellcgi.cgi**を呼び出すように指定します。
+* 16: formタグのactionには必ず **shellcgi.cgi** を呼び出すように指定します。
 * 17: formタグには必ずこのhiddenタイプのinputタグを記述します。通常はサンプルの通りで良いでしょう。
-* 14: **@:search:@**部分はCGIプログラムから置き換えます。
-* 26: **@:result:@**部分はCGIプログラムから置き換えます。
-* 29: **@:message=:@**部分はCGIプログラムから置き換えます。規定値として空文字が指定されています。
+* 14: **@:search:@** 部分はCGIプログラムから置き換えます。
+* 26: **@:result:@** 部分はCGIプログラムから置き換えます。
+* 29: **@:message=:@** 部分はCGIプログラムから置き換えます。規定値として空文字が指定されています。
 
 ### リソースを定義する
 CGIプログラムで排他制御の対象とするリソースを定義します。
@@ -162,8 +162,8 @@ echo "ETC_SHELLS" >~/.shellcgi/tranres/SAMPLE2
 ### ユーザに許可するトランザクションを定義する
 ~/.shellcgi/usertran/の下にBASIC認証またはDIGEST認証するユーザ名と同名のファイルを作成し、その中に
 そのユーザに許可するトランザクションIDを記述します(正規表現可能)。
-認証機構を使用しない場合は全てのユーザが仮想的にユーザ**anonymous**でアクセスしていることになるので、
-**anonymous**に許可するトランザクションIDを記述する必要があります。
+認証機構を使用しない場合は全てのユーザが仮想的にユーザ **anonymous** でアクセスしていることになるので、
+**anonymous** に許可するトランザクションIDを記述する必要があります。
 ```
 echo "^SAMPLE[01]$" >~/.shellcgi/usertran/anonymous
 ```
@@ -222,11 +222,11 @@ echo "^SAMPLE[01]$" >~/.shellcgi/usertran/anonymous
 50: fi
 51: exit 0
 ```
-* 原則、**#-- USER CODING START(x)〜#-- USER CODING END(x)**の間にコーディングを行います。
-* **USER CODING START(1)**のブロック内は任意のコーディングを行います。
-* **USER CODING START(2)**のブロック内は**form**から入力されたデータを処理し、
-次に展開するトランザクションを決定(**settran**)し、そのトランザクションに引き継ぐデータをSPA(Scratch Pad Area)に格納(**setspa**)します。
-* **USER CODING START(3)**のブロック内は**SPA**等からのデータを利用して画面を編集し出力(**outhtml**)します。
+* 原則、**#-- USER CODING START(x)〜#-- USER CODING END(x)** の間にコーディングを行います。
+* **USER CODING START(1)** のブロック内は任意のコーディングを行います。
+* **USER CODING START(2)** のブロック内は **form** から入力されたデータを処理し、
+次に展開するトランザクションを決定( **settran** )し、そのトランザクションに引き継ぐデータをSPA(Scratch Pad Area)に格納( **setspa** )します。
+* **USER CODING START(3)** のブロック内は **SPA** 等からのデータを利用して画面を編集し出力( **outhtml** )します。
 
 ### sample2.cgi(検索結果画面処理CGI)
 ```
