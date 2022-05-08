@@ -288,11 +288,11 @@ echo "^SAMPLE[01]$" >~/.shellcgi/usertran/anonymous
   **項目名** は **input** タグ等の **name** パラメータ値
 * getfilename 項目名  
   \<input type="file" ... \> のファイル名を取得する
-* outhtml HTMLファイル名 項目名1=値1 項目名2=値2 ...
+* outhtml HTMLファイル名 項目名1=値1 項目名2=値2 ...  
   HTMLファイルの **@{項目名n}@** を **値n** に置き換えて出力する  
   **項目名n** はHTMLファイル内の@{項目名n}@
 * getrealres リソースID  
-  **リソースID** に設定された実体を取得する
+  **リソースID** に設定された実体を示す文字列を取得する
 * getspa 項目名  
   SPAに設定した値を取得する
 * setspa 項目名  
@@ -300,14 +300,14 @@ echo "^SAMPLE[01]$" >~/.shellcgi/usertran/anonymous
 * clearallspa  
   自セッション内のSPAを全て削除する
 * clearspa 項目名  
-  **項目名** で指定したSPAを削除する
+  自セッション内の **項目名** で指定したSPAを削除する
 * isoutputmode  
   画面(html)を出力するべきモードの場合 **空文字列** 以外を取得し、$?=0を返す
 * isinputmode  
   画面(html)から受信するべきモードの場合 **空文字列** 以外を取得し、$?=0を返す
 * getuser  
   ユーザ名を取得する  
-  非認証モードの場合 **anonymous** を返す
+  非認証モードの場合 **anonymous** を取得する
 * settran トランザクション名  
   次に実行するべきトランザクションを指定する
 * gettran  
