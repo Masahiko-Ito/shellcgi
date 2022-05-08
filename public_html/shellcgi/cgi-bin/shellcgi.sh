@@ -599,7 +599,7 @@ function ispermitted {
 	return $?
 }
 #
-# Usage: ispermitted
+# Usage: ispermittedwith USER TRANSACTION
 # Check specified user and ransaction are permitted
 #
 function ispermittedwith {
