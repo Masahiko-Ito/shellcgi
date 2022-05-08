@@ -52,87 +52,87 @@ CGICTRL_SWEEPDAY=2; export CGICTRL_SWEEPDAY
 
 #### 入力画面(sample1.html)
 ```
- 1. Content-Type: text/html
- 2. 
- 3. <html>
- 4. <head>
- 5.     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
- 6.     <title>検索文字列を入力してください</title>
- 7. </head>
- 8. <body>
- 9.     [sample1]
-10.     <h1>検索文字列を入力してください</h1>
-11. 
-12.     <form action="./shellcgi.cgi" method="POST" enctype="multipart/form-data">
-13.     <input type="hidden" value="@{CGICTRL_SESSIONID}@" name="CGICTRL_SESSIONID">
-14.     <input type="text" size="80" value="@{search}@" maxlength="80" name="search"><br>
-15.     <input type="submit" value="検索開始" name="submit">
-16.     </form>
-17.     <pre style="color:@{msgcolor=black}@">
-18. @{message=}@
-19.     </pre>
-20. </body>
-21. </html>
+ 1: Content-Type: text/html
+ 2: 
+ 3: <html>
+ 4: <head>
+ 5:     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+ 6:     <title>検索文字列を入力してください</title>
+ 7: </head>
+ 8: <body>
+ 9:     [sample1]
+10:     <h1>検索文字列を入力してください</h1>
+11: 
+12:     <form action="./shellcgi.cgi" method="POST" enctype="multipart/form-data">
+13:     <input type="hidden" value="@{CGICTRL_SESSIONID}@" name="CGICTRL_SESSIONID">
+14:     <input type="text" size="80" value="@{search}@" maxlength="80" name="search"><br>
+15:     <input type="submit" value="検索開始" name="submit">
+16:     </form>
+17:     <pre style="color:@{msgcolor=black}@">
+18: @{message=}@
+19:     </pre>
+20: </body>
+21: </html>
 ```
 行番号は説明の便宜上付番しているものなので、実際に記述してはいけません。
 では上から順に説明します。
-* 1. Content-typeを指定します。通常はサンプルの通りで良いでしょう。
-* 2. 必ず改行させます。
-* 3. この行以降に基本的にはhtml文法に従って定義していきます。
-* 12. formタグのactionには必ず**shellcgi.cgi**を呼び出すように指定します。
-* 13. formタグには必ずこのhiddenタイプのinputタグを記述します。通常はサンプルの通りで良いでしょう。
-* 14. **@{search}@**部分はCGIプログラムから置き換えます。
-* 17. **@{msgcolor=black}@**部分はCGIプログラムから置き換えます。CGIプログラムから置き換えなかった場合は**black**が規定値となります。
-* 18. **@{message=}@**部分はCGIプログラムから置き換えます。規定値として空文字が指定されています。
+* 1: Content-typeを指定します。通常はサンプルの通りで良いでしょう。
+* 2: 必ず改行させます。
+* 3: この行以降に基本的にはhtml文法に従って定義していきます。
+* 12: formタグのactionには必ず**shellcgi.cgi**を呼び出すように指定します。
+* 13: formタグには必ずこのhiddenタイプのinputタグを記述します。通常はサンプルの通りで良いでしょう。
+* 14: **@{search}@**部分はCGIプログラムから置き換えます。
+* 17: **@{msgcolor=black}@**部分はCGIプログラムから置き換えます。CGIプログラムから置き換えなかった場合は**black**が規定値となります。
+* 18: **@{message=}@**部分はCGIプログラムから置き換えます。規定値として空文字が指定されています。
 
 #### 検索結果画面(sample2.html)
 ```
- 1. #
- 2. # START=@:
- 3. # END=:@
- 4. #
- 5. Content-Type: text/html
- 6. 
- 7. <html>
- 8. <head>
- 9.     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-10.     <title>検索結果</title>
-11. </head>
-12. <body>
-13.     [sample2]
-14.     <h1>検索結果</h1>
-15. 
-16.     <form action="./shellcgi.cgi" method="POST" enctype="multipart/form-data">
-17.     <input type="hidden" value="@:CGICTRL_SESSIONID:@" name="CGICTRL_SESSIONID">
-18.     <input type="submit" value="戻る" name="submit">
-19.     </form>
-20.     <h2>検索文字列</h2>
-21.     <pre>
-22. @:search:@
-23.     </pre>
-24.     <h2>検索結果</h2>
-25.     <pre>
-26. @:result:@
-27.     </pre>
-28.     <pre>
-29. @:message=:@
-30.     </pre>
-31. </body>
-32. </html>
+ 1: #
+ 2: # START=@:
+ 3: # END=:@
+ 4: #
+ 5: Content-Type: text/html
+ 6: 
+ 7: <html>
+ 8: <head>
+ 9:     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+10:     <title>検索結果</title>
+11: </head>
+12: <body>
+13:     [sample2]
+14:     <h1>検索結果</h1>
+15: 
+16:     <form action="./shellcgi.cgi" method="POST" enctype="multipart/form-data">
+17:     <input type="hidden" value="@:CGICTRL_SESSIONID:@" name="CGICTRL_SESSIONID">
+18:     <input type="submit" value="戻る" name="submit">
+19:     </form>
+20:     <h2>検索文字列</h2>
+21:     <pre>
+22: @:search:@
+23:     </pre>
+24:     <h2>検索結果</h2>
+25:     <pre>
+26: @:result:@
+27:     </pre>
+28:     <pre>
+29: @:message=:@
+30:     </pre>
+31: </body>
+32: </html>
 ```
 行番号は説明の便宜上付番しているものなので、実際に記述してはいけません。
 では上から順に説明します。
-* 1. 「#」で始まる行はコメント行として扱われます。
-* 2. コメント行に、**START=**を記述した場合は、**=**の右辺値で置換対象文字列の開始を表す**@{**を変更します。
-* 3. コメント行に、**END=**を記述した場合は、**=**の右辺値で置換対象文字列の終了を表す**}@**を変更します。
-* 5. Content-typeを指定します。通常はサンプルの通りで良いでしょう。
-* 6. 必ず改行させます。
-* 7. この行以降に基本的にはhtml文法に従って定義していきます。
-* 16. formタグのactionには必ず**shellcgi.cgi**を呼び出すように指定します。
-* 17. formタグには必ずこのhiddenタイプのinputタグを記述します。通常はサンプルの通りで良いでしょう。
-* 14. **@:search:@**部分はCGIプログラムから置き換えます。
-* 26. **@:result:@**部分はCGIプログラムから置き換えます。
-* 29. **@:message=:@**部分はCGIプログラムから置き換えます。規定値として空文字が指定されています。
+* 1: 「#」で始まる行はコメント行として扱われます。
+* 2: コメント行に、**START=**を記述した場合は、**=**の右辺値で置換対象文字列の開始を表す**@{**を変更します。
+* 3: コメント行に、**END=**を記述した場合は、**=**の右辺値で置換対象文字列の終了を表す**}@**を変更します。
+* 5: Content-typeを指定します。通常はサンプルの通りで良いでしょう。
+* 6: 必ず改行させます。
+* 7: この行以降に基本的にはhtml文法に従って定義していきます。
+* 16: formタグのactionには必ず**shellcgi.cgi**を呼び出すように指定します。
+* 17: formタグには必ずこのhiddenタイプのinputタグを記述します。通常はサンプルの通りで良いでしょう。
+* 14: **@:search:@**部分はCGIプログラムから置き換えます。
+* 26: **@:result:@**部分はCGIプログラムから置き換えます。
+* 29: **@:message=:@**部分はCGIプログラムから置き換えます。規定値として空文字が指定されています。
 
 ### リソースを定義する
 CGIプログラムで排他制御の対象とするリソースを定義します。
@@ -170,57 +170,57 @@ echo "^SAMPLE[01]$" >~/.shellcgi/usertran/anonymous
 
 ### sample1.cgi(入力画面処理CGI)
 ```
- 1. #! /bin/sh
- 2. . ./shellcgi.sh
- 3. #-- USER CODING START(1)
- 4. #-- USER CODING END(1)
- 5. if [ `isinputmode` ]
- 6. then
- 7. #
- 8. # This block processes input data from FORM or SPA and determine next transaction which create screen.
- 9. #
-10. #-- USER CODING START(2)
-11.     search=`getvalue search`
-12.     if [ "X${search}" = "X" ]
-13.     then
-14.         setspa search "${search}"
-15.         setspa message "検索文字列が指定されていません"
-16.         setspa msgcolor "red"
-17.         settran "SAMPLE1"
-18.     else
-19.         user=`getuser`
-20.         if [ `ispermittedwith "${user}" SAMPLE2` ]
-21.         then
-22.             setspa search "${search}"
-23.             setspa message ""
-24.             setspa msgcolor "black"
-25.             settran "SAMPLE2"
-26.         else
-27.             setspa search "${search}"
-28.             setspa message "${user}は結果の表示を許可されていません"
-29.             setspa msgcolor "red"
-30.             settran "SAMPLE1"
-31.         fi
-32.     fi
-33. #-- USER CODING END(2)
-34. else
-35. #
-36. # This block edit screen from SPA and output it.
-37. # Next transaction must be a transaction for this program.
-38. #
-39. #-- USER CODING START(3)
-40.     thistran=`gettran`
-41.     search=`getspa search`
-42.     message=`getspa message`
-43.     msgcolor=`getspa msgcolor`
-44.     outhtml ${thistran}.html \
-45.         "search=${search}" \
-46.         "message=${message}" \
-47.         "msgcolor=${msgcolor}"
-48.     settran "${thistran}"
-49. #-- USER CODING END(3)
-50. fi
-51. exit 0
+ 1: #! /bin/sh
+ 2: . ./shellcgi.sh
+ 3: #-- USER CODING START(1)
+ 4: #-- USER CODING END(1)
+ 5: if [ `isinputmode` ]
+ 6: then
+ 7: #
+ 8: # This block processes input data from FORM or SPA and determine next transaction which create screen.
+ 9: #
+10: #-- USER CODING START(2)
+11:     search=`getvalue search`
+12:     if [ "X${search}" = "X" ]
+13:     then
+14:         setspa search "${search}"
+15:         setspa message "検索文字列が指定されていません"
+16:         setspa msgcolor "red"
+17:         settran "SAMPLE1"
+18:     else
+19:         user=`getuser`
+20:         if [ `ispermittedwith "${user}" SAMPLE2` ]
+21:         then
+22:             setspa search "${search}"
+23:             setspa message ""
+24:             setspa msgcolor "black"
+25:             settran "SAMPLE2"
+26:         else
+27:             setspa search "${search}"
+28:             setspa message "${user}は結果の表示を許可されていません"
+29:             setspa msgcolor "red"
+30:             settran "SAMPLE1"
+31:         fi
+32:     fi
+33: #-- USER CODING END(2)
+34: else
+35: #
+36: # This block edit screen from SPA and output it.
+37: # Next transaction must be a transaction for this program.
+38: #
+39: #-- USER CODING START(3)
+40:     thistran=`gettran`
+41:     search=`getspa search`
+42:     message=`getspa message`
+43:     msgcolor=`getspa msgcolor`
+44:     outhtml ${thistran}.html \
+45:         "search=${search}" \
+46:         "message=${message}" \
+47:         "msgcolor=${msgcolor}"
+48:     settran "${thistran}"
+49: #-- USER CODING END(3)
+50: fi
+51: exit 0
 ```
 * 原則、**#-- USER CODING START(x)〜#-- USER CODING END(x)**の間にコーディングを行います。
 * **USER CODING START(1)**のブロック内は任意のコーディングを行います。
@@ -230,55 +230,55 @@ echo "^SAMPLE[01]$" >~/.shellcgi/usertran/anonymous
 
 ### sample2.cgi(検索結果画面処理CGI)
 ```
- 1. #! /bin/sh
- 2. . ./shellcgi.sh
- 3. #-- USER CODING START(1)
- 4. #-- USER CODING END(1)
- 5. if [ `isinputmode` ]
- 6. then
- 7. #
- 8. # This block processes input data from FORM or SPA and determine next transaction which create screen.
- 9. #
-10. #-- USER CODING START(2)
-11.     settran "SAMPLE1"
-12. #-- USER CODING END(2)
-13. else
-14. #
-15. # This block edit screen from SPA and output it.
-16. # Next transaction must be a transaction for this program.
-17. #
-18. #-- USER CODING START(3)
-19.     thistran=`gettran`
-20.     search=`getspa search`
-21.     inputfile=`getrealres "ETC_SHELLS"`
-22.     result=`cat ${inputfile} | egrep "${search}"`
-23.     setspa search "${search}"
-24.     outhtml ${thistran}.html \
-25.         "search=${search}" \
-26.         "result=${result}"
-27.         "message=" \
-28.     settran "${thistran}"
-29. #-- USER CODING END(3)
-30. fi
-31. exit 0
+ 1: #! /bin/sh
+ 2: . ./shellcgi.sh
+ 3: #-- USER CODING START(1)
+ 4: #-- USER CODING END(1)
+ 5: if [ `isinputmode` ]
+ 6: then
+ 7: #
+ 8: # This block processes input data from FORM or SPA and determine next transaction which create screen.
+ 9: #
+10: #-- USER CODING START(2)
+11:     settran "SAMPLE1"
+12: #-- USER CODING END(2)
+13: else
+14: #
+15: # This block edit screen from SPA and output it.
+16: # Next transaction must be a transaction for this program.
+17: #
+18: #-- USER CODING START(3)
+19:     thistran=`gettran`
+20:     search=`getspa search`
+21:     inputfile=`getrealres "ETC_SHELLS"`
+22:     result=`cat ${inputfile} | egrep "${search}"`
+23:     setspa search "${search}"
+24:     outhtml ${thistran}.html \
+25:         "search=${search}" \
+26:         "result=${result}"
+27:         "message=" \
+28:     settran "${thistran}"
+29: #-- USER CODING END(3)
+30: fi
+31: exit 0
 ```
 
 ### 起動の仕方
 会話処理の一番最初はGETメソッドを使い、パラメータ「inittran」に
 初期トランザクションを指定して、「shellcgi.cgi」を呼び出します。
 ```
- 1. <html>
- 2. <head>
- 3.     <META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=UTF-8">
- 4.     <title>shellcgi sample page</title>
- 5. </head>
- 6. <body>
- 7.     <h1>shellcgi sample page</h1>
- 8.     <ul>
- 9.         <li><a href="./cgi-bin/shellcgi.cgi?inittran=SAMPLE1">shellcgi sample</a>
-10.     </ul>
-11. </body>
-12. </html>
+ 1: <html>
+ 2: <head>
+ 3:     <META HTTP-EQUIV="Content-Type" CONTENT="text/html;charset=UTF-8">
+ 4:     <title>shellcgi sample page</title>
+ 5: </head>
+ 6: <body>
+ 7:     <h1>shellcgi sample page</h1>
+ 8:     <ul>
+ 9:         <li><a href="./cgi-bin/shellcgi.cgi?inittran=SAMPLE1">shellcgi sample</a>
+10:     </ul>
+11: </body>
+12: </html>
 ```
 
 ## デモ
