@@ -294,7 +294,7 @@ echo "^SAMPLE[01]$" >~/.shellcgi/usertran/anonymous
   **リソースID** に設定された実体を示す文字列を取得する
 * getspa 項目名  
   SPAに設定した値を取得する
-* setspa 項目名  
+* setspa 項目名 設定値
   SPAに値を設定する
 * clearallspa  
   自セッション内のSPAを全て削除する
