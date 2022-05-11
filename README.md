@@ -69,7 +69,7 @@ CGICTRL_SWEEPDAY=2; export CGICTRL_SWEEPDAY
 ### 画面を設計する
 ~/.shellcgi/html/の下にhtmlファイル形式で画面を作成します。
 
-#### 入力画面(sample1.html)
+#### 入力画面(SAMPLE1.html)
 ```
  1: Content-Type: text/html
  2: 
@@ -104,7 +104,7 @@ CGICTRL_SWEEPDAY=2; export CGICTRL_SWEEPDAY
 * 17: **@{msgcolor=black}@** 部分はCGIプログラムから置き換えます。CGIプログラムから置き換えなかった場合は **black** が規定値となります。
 * 18: **@{message=}@** 部分はCGIプログラムから置き換えます。規定値として空文字が指定されています。
 
-#### 検索結果画面(sample2.html)
+#### 検索結果画面(SAMPLE2.html)
 ```
  1: #
  2: # START=@:
