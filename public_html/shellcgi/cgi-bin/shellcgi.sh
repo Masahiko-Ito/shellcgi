@@ -167,7 +167,6 @@ function getlogdir {
 function isloggingmode {
 	if [ "X${CGICTRL_LOGGING}" = "XYES" ]
 	then
-		echo "${CGICTRL_LOGGING}"
 		return 0
 	else
 		return 1
@@ -542,7 +541,6 @@ function clearspa {
 function isoutputmode {
 	if [ "X${CGICTRL_IOMODE}" = "Xoutput" ]
 	then
-		echo "${CGICTRL_IOMODE}"
 		return 0
 	else
 		return 1
@@ -555,7 +553,6 @@ function isoutputmode {
 function isinputmode {
 	if [ "X${CGICTRL_IOMODE}" = "Xinput" ]
 	then
-		echo "${CGICTRL_IOMODE}"
 		return 0
 	else
 		return 1
@@ -609,7 +606,6 @@ function ispermittedwith {
 	do
 		if [ `echo "${tran}" | egrep "$i"` ]
 		then
-			echo "${user}:${tran}"
 			return 0
 		fi
 	done

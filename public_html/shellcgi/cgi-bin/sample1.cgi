@@ -2,7 +2,7 @@
 . ./shellcgi.sh
 #-- USER CODING START
 #-- USER CODING END
-if [ `isinputmode` ]
+if isinputmode
 then
 #
 # This block processes input data from FORM or SPA and determine next transaction which create screen.
@@ -17,7 +17,7 @@ then
 		settran "SAMPLE1"
 	else
 		user=`getuser`
-		if [ `ispermittedwith "${user}" SAMPLE2` ]
+		if ispermittedwith "${user}" SAMPLE2
 		then
 			setspa search "${search}"
 			setspa message ""

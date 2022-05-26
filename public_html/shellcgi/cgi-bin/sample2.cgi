@@ -2,7 +2,7 @@
 . ./shellcgi.sh
 #-- USER CODING START
 #-- USER CODING END
-if [ `isinputmode` ]
+if isinputmode
 then
 #
 # This block processes input data from FORM or SPA and determine next transaction which create screen.

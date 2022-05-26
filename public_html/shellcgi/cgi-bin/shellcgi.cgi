@@ -47,7 +47,7 @@ then
 		exit 1
 	fi
 
-	if [ `isloggingmode` ]
+	if isloggingmode
 	then
 		CGICTRL_LOGFILE=`getlogdir`/`date +"%Y%m%d"`.log
 		(
@@ -78,7 +78,7 @@ then
 fi
 CGICTRL_CGIPGM=`getpgm "${CGICTRL_TRAN}"`
 CGICTRL_IOMODE="output"; export CGICTRL_IOMODE
-if [ `isloggingmode` ]
+if isloggingmode
 then
 	CGICTRL_LOGTMP1=`getlogdir`/"${CGICTRL_SESSIONID}".1
 	CGICTRL_LOGTMP2=`getlogdir`/"${CGICTRL_SESSIONID}".2
