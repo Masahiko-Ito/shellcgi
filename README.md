@@ -193,7 +193,7 @@ echo "^SAMPLE[01]$" >~/.shellcgi/usertran/anonymous
  2: . ./shellcgi.sh
  3: #-- USER CODING START(1)
  4: #-- USER CODING END(1)
- 5: if [ `isinputmode` ]
+ 5: if isinputmode
  6: then
  7: #
  8: # This block processes input data from FORM or SPA and determine next transaction which create screen.
@@ -208,7 +208,7 @@ echo "^SAMPLE[01]$" >~/.shellcgi/usertran/anonymous
 17:         settran "SAMPLE1"
 18:     else
 19:         user=`getuser`
-20:         if [ `ispermittedwith "${user}" SAMPLE2` ]
+20:         if ispermittedwith "${user}" SAMPLE2
 21:         then
 22:             setspa search "${search}"
 23:             setspa message ""
@@ -253,7 +253,7 @@ echo "^SAMPLE[01]$" >~/.shellcgi/usertran/anonymous
  2: . ./shellcgi.sh
  3: #-- USER CODING START(1)
  4: #-- USER CODING END(1)
- 5: if [ `isinputmode` ]
+ 5: if isinputmode
  6: then
  7: #
  8: # This block processes input data from FORM or SPA and determine next transaction which create screen.
@@ -301,9 +301,9 @@ echo "^SAMPLE[01]$" >~/.shellcgi/usertran/anonymous
 * clearspa 項目名  
   自セッション内の **項目名** で指定したSPAを削除する
 * isoutputmode  
-  画面(html)を出力するべきモードの場合 **空文字列** 以外を取得し、$?=0を返す
+  画面(html)を出力するべきモードの場合、$?=0を返す
 * isinputmode  
-  画面(html)から受信するべきモードの場合 **空文字列** 以外を取得し、$?=0を返す
+  画面(html)から受信するべきモードの場合、$?=0を返す
 * getuser  
   ユーザ名を取得する  
   非認証モードの場合 **anonymous** を取得する
@@ -312,9 +312,9 @@ echo "^SAMPLE[01]$" >~/.shellcgi/usertran/anonymous
 * gettran  
   現在のトランザクション名を取得する
 * ispermitted  
-  現在のユーザ、トランザクションの組み合わせが許可されている場合、**空文字列** 以外を取得し、$?=0を返す
+  現在のユーザ、トランザクションの組み合わせが許可されている場合、$?=0を返す
 * ispermittedwith ユーザ名 トランザクション名  
-  指定したユーザ、トランザクションの組み合わせが許可されている場合、**空文字列** 以外を取得し、$?=0を返す
+  指定したユーザ、トランザクションの組み合わせが許可されている場合、$?=0を返す
 
 ### 起動の仕方
 会話処理の一番最初はGETメソッドを使い、パラメータ「inittran」に
