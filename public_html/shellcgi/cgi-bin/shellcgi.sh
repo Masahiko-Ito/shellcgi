@@ -28,7 +28,7 @@
 #  ${CGICTRL_HOMEDIR}/tranres/_tranname_
 #  ${CGICTRL_HOMEDIR}/usertran/_username_
 #
-CGICTRL_HOMEDIR=/home/_USERNAME_/.shellcgi; export CGICTRL_HOMEDIR
+CGICTRL_HOMEDIR=/home/m-ito/.shellcgi; export CGICTRL_HOMEDIR
 #
 # Set temporary directory for shellcgi system.
 # This directory will be created by shellcgi.cgi automatically.
@@ -77,7 +77,7 @@ function startcgi {
 		echo "${QUERY_STRING}" >"${CGICTRL_INPUT}"
 	else
 		dd bs="${CONTENT_LENGTH}" count=1 >"${CGICTRL_INPUT}" 2>/dev/null
-		CGICTRL_SEP=`cat "${CGICTRL_INPUT}" | head -1`; export CGICTRL_SEP
+		CGICTRL_SEP=`cat "${CGICTRL_INPUT}" | head -1 | tr -d '\r'`; export CGICTRL_SEP
 	fi
 }
 #
