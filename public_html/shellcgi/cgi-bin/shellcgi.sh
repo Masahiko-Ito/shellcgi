@@ -611,3 +611,25 @@ function ispermittedwith {
 	done
 	return 1
 }
+#------------------------------------------------------------
+# Utility
+#------------------------------------------------------------
+function sweeplock {
+	(
+		cd "${CGICTRL_TMPDIR}/lock/"
+		if [ $? -eq 0 ]
+		then
+			for i in `find . -type d | egrep -v '^\.$'`
+			do
+				pid=`cat "$i"/* | sed -e 's/.*\.\([0-9]*\)$/\1/'`
+				if ps ax | sed -e 's/^ *//' | egrep "^${pid} " >/dev/null 2>&1
+				then
+					:
+				else
+					rm -f "$i"/*
+					rmdir "$i"
+				fi
+			done
+		fi
+	)
+}
