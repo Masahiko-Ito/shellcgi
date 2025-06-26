@@ -290,6 +290,7 @@ echo "^SAMPLE[01]$" >~/.shellcgi/usertran/anonymous
   \<input type="file" ... \> のファイル名を取得する
 * outhtml HTMLファイル名 項目名1=値1 項目名2=値2 ...  
   HTMLファイルの **@{項目名n}@** を **値n** に置き換えて出力する  
+  XSS(クロスサイトスクリプション)対策済み
 * getrealres リソースID  
   **リソースID** に設定された実体を示す文字列を取得する
 * getspa 項目名  
