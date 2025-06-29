@@ -337,3 +337,6 @@ echo "^SAMPLE[01]$" >~/.shellcgi/usertran/anonymous
 
 ## デモ
 [shellcgi sample page](http://myh.no-ip.org/~m-ito/shellcgi/)
+
+## Youtube
+[shellcgi: シェルスクリプトCGIフレームワーク](https://youtu.be/hONeCDjZ8vI)
