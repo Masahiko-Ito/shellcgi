@@ -76,7 +76,7 @@ function startcgi {
 	then
 		echo "${QUERY_STRING}" >"${CGICTRL_INPUT}"
 	else
-		dd bs="${CONTENT_LENGTH}" count=1 >"${CGICTRL_INPUT}" 2>/dev/null
+		dd bs="${CONTENT_LENGTH}" count=1 iflag=fullblock >"${CGICTRL_INPUT}" 2>/dev/null
 		CGICTRL_SEP=`cat "${CGICTRL_INPUT}" | head -1 | tr -d '\r'`; export CGICTRL_SEP
 	fi
 }
