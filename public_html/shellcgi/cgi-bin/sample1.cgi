@@ -45,7 +45,7 @@ else
 		"search=${search}" \
 		"message=${message}" \
 		"msgcolor=${msgcolor}"
-	settran "${thistran}"
+#	settran "${thistran}"
 #-- USER CODING END
 fi
 exit 0

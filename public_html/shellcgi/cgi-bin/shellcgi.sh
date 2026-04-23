@@ -181,7 +181,21 @@ function lock {
 	res="$2"
 	if [ -f ${CGICTRL_HOMEDIR}/resource/${res} ]
 	then
-		mkdir "${CGICTRL_TMPDIR}/lock/${res}" 2>/dev/null || return 1
+#		mkdir "${CGICTRL_TMPDIR}/lock/${res}" 2>/dev/null || return 1
+		mkdir "${CGICTRL_TMPDIR}/lock/${res}" 2>/dev/null
+		if [ $? -ne 0 ]
+		then
+			cd "${CGICTRL_TMPDIR}/lock/" || return 2
+			pid=`cat "./${res}"/* | sed -e 's/^.*\.\([0-9]*\)$/\1/'`
+			if ps ax | sed -e 's/^ *//' | egrep "^${pid} " >/dev/null 2>&1
+			then
+				:
+			else
+				rm -f "./${res}"/*
+				rmdir "./${res}"
+			fi
+			mkdir "${CGICTRL_TMPDIR}/lock/${res}" 2>/dev/null || return 1
+		fi
 		echo "${CGICTRL_UNIQUEID}" >"${CGICTRL_TMPDIR}/lock/${res}/${tran}"
 		return 0
 	fi

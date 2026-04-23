@@ -25,7 +25,7 @@ else
 		"search=${search}" \
 		"result=${result}"
 		"message=" \
-	settran "${thistran}"
+#	settran "${thistran}"
 #-- USER CODING END
 fi
 exit 0
