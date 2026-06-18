@@ -52,6 +52,10 @@ then
 	then
 		showresourceerror
 		exit 1
+	elif [ ${lockallstat} -eq 3 ]
+	then
+		showlockdirerror
+		exit 1
 	fi
 
 	if isloggingmode
@@ -81,6 +85,10 @@ then
 elif [ ${lockallstat} -eq 2 ]
 then
 	showresourceerror
+	exit 1
+elif [ ${lockallstat} -eq 3 ]
+then
+	showlockdirerror
 	exit 1
 fi
 CGICTRL_CGIPGM=`getpgm "${CGICTRL_TRAN}"`

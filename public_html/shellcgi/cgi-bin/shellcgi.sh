@@ -181,20 +181,29 @@ function lock {
 	res="$2"
 	if [ -f ${CGICTRL_HOMEDIR}/resource/${res} ]
 	then
-#		mkdir "${CGICTRL_TMPDIR}/lock/${res}" 2>/dev/null || return 1
-		mkdir "${CGICTRL_TMPDIR}/lock/${res}" 2>/dev/null
+		mkdir "${CGICTRL_TMPDIR}/lock/${res}" 2>/dev/null	# try to get lock
 		if [ $? -ne 0 ]
 		then
-			cd "${CGICTRL_TMPDIR}/lock/" || return 2
+			pushd "${CGICTRL_TMPDIR}/lock/" >/dev/null 2>&1 || return 3
 			pid=`cat "./${res}"/* | sed -e 's/^.*\.\([0-9]*\)$/\1/'`
-			if ps ax | sed -e 's/^ *//' | egrep "^${pid} " >/dev/null 2>&1
+			if [ "X${pid}" = "X" ]
 			then
-				:
+				:	# is updating right now?
 			else
-				rm -f "./${res}"/*
-				rmdir "./${res}"
+				if ps ax | sed -e 's/^ *//' | egrep "^${pid} " >/dev/null 2>&1
+				then
+					:	# process is alive now
+				else
+					pid2=`cat "./${res}"/* | sed -e 's/^.*\.\([0-9]*\)$/\1/'`
+					if [ "X${pid}" = "X${pid2}" ]
+					then
+						rm -f "./${res}"/*
+						rmdir "./${res}"
+					fi
+				fi
 			fi
-			mkdir "${CGICTRL_TMPDIR}/lock/${res}" 2>/dev/null || return 1
+			popd >/dev/null 2>&1
+			mkdir "${CGICTRL_TMPDIR}/lock/${res}" 2>/dev/null || return 1	# try to get lock again
 		fi
 		echo "${CGICTRL_UNIQUEID}" >"${CGICTRL_TMPDIR}/lock/${res}/${tran}"
 		return 0
@@ -234,10 +243,10 @@ function lockall {
 		count=`expr ${count} + 1`
 		while [ ${lockstat} -ne 0 ]
 		do
-			if [ ${lockstat} -eq 2 ]
+			if [ ${lockstat} -eq 2 -o ${lockstat} -eq 3 ]
 			then
 				unlockall ${tran}
-				return 2
+				return ${lockstat}
 			fi
 			if [ ${count} -ge ${CGICTRL_MAXLOCKRETRY} ]
 			then
@@ -286,6 +295,15 @@ function showresourceerror {
 	echo "Content-Type: text/html"
 	echo ""
 	echo "ResourceID error while excuting ${CGICTRL_TRAN}."
+}
+#
+# Usage: showlockdirerror
+# Show changing lockdir error
+#
+function showlockdirerror {
+	echo "Content-Type: text/html"
+	echo ""
+	echo "Changing lockdir error while excuting ${CGICTRL_TRAN}."
 }
 #------------------------------------------------------------
 # Functions for user applications
