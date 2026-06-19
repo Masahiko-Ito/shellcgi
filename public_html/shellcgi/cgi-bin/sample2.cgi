@@ -22,6 +22,7 @@ else
 	result=`cat ${inputfile} | egrep "${search}"`
 	setspa search "${search}"
 	outhtml ${thistran}.html \
+		"tran=${thistran}" \
 		"search=${search}" \
 		"result=${result}"
 		"message=" \

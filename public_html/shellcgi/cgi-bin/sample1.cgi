@@ -42,6 +42,7 @@ else
 	message=`getspa message`
 	msgcolor=`getspa msgcolor`
 	outhtml ${thistran}.html \
+		"tran=${thistran}" \
 		"search=${search}" \
 		"message=${message}" \
 		"msgcolor=${msgcolor}"
