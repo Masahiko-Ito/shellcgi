@@ -3,6 +3,18 @@
 <head>
 	<meta charset="utf-8">
 	<title>shellcgi sample page</title>
+	<script>
+		window.history.forward()
+		window.onload = function(){
+			window.history.forward()
+		}
+		window.onpageshow = function(evt){
+			if (evt.persisted){
+				window.history.forward()
+			}
+		}
+		window.onunload = function(){void(0)}
+	</script>
 </head>
 <body>
 	<h1>shellcgi sample page</h1>

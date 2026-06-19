@@ -5,6 +5,18 @@ Content-Type: text/html
 <head>
 	<meta charset="utf-8">
 	<title>検索文字列を入力してください</title>
+	<script>
+		window.history.forward()
+		window.onload = function(){
+			window.history.forward()
+		}
+		window.onpageshow = function(evt){
+			if (evt.persisted){
+				window.history.forward()
+			}
+		}
+		window.onunload = function(){void(0)}
+	</script>
 </head>
 <body>
 	[@{tran}@]
