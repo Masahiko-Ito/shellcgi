@@ -652,12 +652,21 @@ function sweeplock {
 		for i in `find . -type d | egrep -v '^\.$'`
 		do
 			pid=`cat "$i"/* | sed -e 's/.*\.\([0-9]*\)$/\1/'`
-			if ps ax | sed -e 's/^ *//' | egrep "^${pid} " >/dev/null 2>&1
+			if [ "X${pid}" = "X" ]
 			then
 				:
 			else
-				rm -f "$i"/*
-				rmdir "$i"
+				if ps ax | sed -e 's/^ *//' | egrep "^${pid} " >/dev/null 2>&1
+				then
+					:
+				else
+					pid2=`cat "$i"/* | sed -e 's/.*\.\([0-9]*\)$/\1/'`
+					if [ "X${pid}" = "X${pid2}" }
+					then
+						rm -f "$i"/*
+						rmdir "$i"
+					}
+				fi
 			fi
 		done
 	)
